@@ -1,0 +1,8 @@
+services:
+  traktifytvtime:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./gdpr-data:/gdpr-data
+      - ./localStorage.json:/app/localStorage.json

@@ -1,0 +1,29 @@
+version: "3"
+
+vars:
+    DOCKER_COMPOSE: "docker compose"
+
+tasks:
+    default:
+        desc: "list the available tasks."
+        cmds:
+            - task -l
+
+    docker:build:
+        desc: "docker: Build Docker images with docker-compose."
+        cmds:
+            - "{{.DOCKER_COMPOSE}} build --pull"
+            - 'echo "✅ Docker : images built from cache."'
+
+    docker:build-nocache:
+        desc: "docker: Build Docker images with docker-compose (no cache)."
+        cmds:
+            - "{{.DOCKER_COMPOSE}} build --pull --no-cache"
+            - 'echo "✅ Docker : clean images built."'
+
+    traktifytvtime:
+        desc: "execute TvTime To Trakt script."
+        cmds:
+            - "{{.DOCKER_COMPOSE}} run traktifytvtime"
+            - 'echo "✅ TvTime To Trakt script executed with success."'
+    
